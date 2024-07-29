@@ -9,18 +9,23 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    arealistform.cpp \
     danmuweight.cpp \
+    libs/qrcodegen.cpp \
     main.cpp \
     mainwindow.cpp \
-    qrcodegen.cpp
+    recordfile.cpp
 
 HEADERS += \
+    arealistform.h \
     danmuweight.h \
+    libs/qrcodegen.h \
     mainwindow.h \
     publiclib.h \
-    qrcodegen.h
+    recordfile.h
 
 FORMS += \
+    arealistform.ui \
     danmuweight.ui \
     mainwindow.ui
 
@@ -28,7 +33,6 @@ TRANSLATIONS += \
     client_zh_CN.ts
 CONFIG += lrelease
 CONFIG += embed_translations
-
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
