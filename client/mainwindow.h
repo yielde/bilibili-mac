@@ -27,6 +27,7 @@ public:
         , url(QUrl(""))
         , area("")
         , user_id("")
+        , blivechat_url("")
 
     {
     }
@@ -37,6 +38,7 @@ public:
         url = info.url;
         area = info.area;
         user_id = info.user_id;
+        blivechat_url = info.blivechat_url;
     }
     NetWorkInfo& operator=(const NetWorkInfo& info)
     {
@@ -46,6 +48,7 @@ public:
             url = info.url;
             area = info.area;
             user_id = info.user_id;
+            blivechat_url = info.blivechat_url;
         }
         return *this;
     }
@@ -56,6 +59,7 @@ public:
     QUrl url;
     QString area;
     QString user_id;
+    QString blivechat_url;
 };
 
 class MainWindow : public QMainWindow {
@@ -82,6 +86,7 @@ protected slots:
 
 signals:
     void area_form_show(QJsonObject obj);
+    void load_damu_webengine(QUrl url, QList<std::pair<QString, QString>> cookie, QString room_id);
 
 private:
     void m_check_login_status(QByteArray& data);

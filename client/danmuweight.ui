@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>300</width>
-    <height>600</height>
+    <width>291</width>
+    <height>855</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -20,17 +20,89 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">margin: 5px
-</string>
+   <string notr="true">QWidget {
+    background: qlineargradient(
+        x1: 0, y1: 0, 
+        x2: 1, y2: 1,
+        stop: 0 rgb(29, 30, 30),
+        stop: 1 rgb(92, 93, 93)
+    );
+}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
-    <widget class="QListWidget" name="MsgText">
-     <property name="styleSheet">
-      <string notr="true">background-color:rgb(212, 255, 154);
-item{height: 20px};</string>
-     </property>
-    </widget>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLineEdit" name="danmuWidth">
+         <property name="styleSheet">
+          <string notr="true">background: transparent;
+margin:0px;
+color:white;</string>
+         </property>
+         <property name="placeholderText">
+          <string>我的宽度(整数)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="danmuHeight">
+         <property name="styleSheet">
+          <string notr="true">background:transparent;
+margin:0px;
+color:white;</string>
+         </property>
+         <property name="placeholderText">
+          <string>我的高度(整数)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="danmuRectBtn">
+         <property name="minimumSize">
+          <size>
+           <width>40</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #1E90FF;  /* 道奇蓝 */
+    color: white;
+    border: none;
+    border-radius: 6px;  /* 这将创建椭圆形效果 */
+    margin:0px;
+}
+
+QPushButton:hover {
+    background-color: #4169E1;  /* 皇家蓝，鼠标悬停时稍微变暗 */
+}
+
+QPushButton:pressed {
+    background-color: #32CD32;  /* 酸橙绿，按下时变为绿色 */
+}</string>
+         </property>
+         <property name="text">
+          <string>设置</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -38,16 +110,16 @@ item{height: 20px};</string>
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
      <property name="leftMargin">
-      <number>5</number>
+      <number>4</number>
      </property>
      <property name="topMargin">
-      <number>5</number>
+      <number>0</number>
      </property>
      <property name="rightMargin">
-      <number>5</number>
+      <number>4</number>
      </property>
      <property name="bottomMargin">
-      <number>5</number>
+      <number>0</number>
      </property>
      <item>
       <widget class="QLineEdit" name="MsgEdit">
@@ -64,7 +136,18 @@ item{height: 20px};</string>
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255))rgb(139, 255, 144)</string>
+        <string notr="true">border-width:2px;
+border-color:rgba(118, 253, 255, 176);
+border-style:solid;
+margin-top:0px;
+margin-left:0px;
+color:white;</string>
+       </property>
+       <property name="maxLength">
+        <number>20</number>
+       </property>
+       <property name="placeholderText">
+        <string>最多输入20字</string>
        </property>
       </widget>
      </item>
@@ -89,8 +172,21 @@ item{height: 20px};</string>
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:rgb(205, 255, 150);
-</string>
+        <string notr="true">QPushButton {
+    background-color: #1E90FF;  /* 道奇蓝 */
+    color: white;
+    border: none;
+    border-radius: 8px;  /* 这将创建椭圆形效果 */
+  
+}
+
+QPushButton:hover {
+    background-color: #4169E1;  /* 皇家蓝，鼠标悬停时稍微变暗 */
+}
+
+QPushButton:pressed {
+    background-color: #32CD32;  /* 酸橙绿，按下时变为绿色 */
+}</string>
        </property>
        <property name="text">
         <string>发送</string>

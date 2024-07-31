@@ -11,6 +11,7 @@ struct URLS {
     QString StartLiveUrl = "https://api.live.bilibili.com/room/v1/Room/startLive";
     QString StopLiveUrl = "https://api.live.bilibili.com/room/v1/Room/stopLive";
     QString GetRoomId = "https://api.live.bilibili.com/live_user/v1/Master/info?uid=";
+    QString SendDanmu = "https://api.live.bilibili.com/msg/send";
     inline void SetLoginUrl(QString qrcode)
     {
         CheckLoginUrl = CheckLoginUrl + qrcode;

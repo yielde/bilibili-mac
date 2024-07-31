@@ -64,6 +64,8 @@ bool RecordFile::DumpStream()
     dumpstream << networinfo->url;
     dumpstream << networinfo->refresh_token;
     dumpstream << networinfo->user_id;
+    dumpstream << networinfo->blivechat_url;
+
     m_file.close();
     return true;
 }
@@ -81,6 +83,7 @@ bool RecordFile::LoadStream()
     loadstream >> networinfo->url;
     loadstream >> networinfo->refresh_token;
     loadstream >> networinfo->user_id;
+    loadstream >> networinfo->blivechat_url;
     m_file.close();
     return true;
 }

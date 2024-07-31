@@ -32,6 +32,7 @@ signals:
 
 public slots:
     void slots_build_area(QJsonObject obj);
+
 protected slots:
     void slots_change_area1(const QString& text);
     void slots_change_area2(const QString& text);

@@ -36,9 +36,14 @@ MainWindow::MainWindow(QWidget* parent)
     , file(new RecordFile("./bili-cookie.bili"))
 {
     ui->setupUi(this);
-
+    this->setWindowTitle("bilibili-mac");
     connect(this, &MainWindow::area_form_show, &arealist_form, &AreaListForm::slots_build_area);
+    connect(this, &MainWindow::load_damu_webengine, &danmu, &DanmuWeight::slots_load_webengine);
     connect(&arealist_form, &AreaListForm::start_get_rtpm_code, this, &MainWindow::slots_start_get_rtmp_code);
+
+    file->LoadStream();
+    m_networkinfo = *file->networinfo;
+    ui->bilivechatLine->setText(m_networkinfo.blivechat_url);
 }
 
 MainWindow::~MainWindow()
@@ -61,11 +66,12 @@ void MainWindow::GenQRcode(QString url)
     QPixmap pixmap(width, height);
     QPainter painter(&pixmap);
     painter.setBrush(Qt::black);
-    double scale = width / qr.getSize();
+    int scale = width / qr.getSize();
+    double offset = (width - scale * qr.getSize()) / 2;
     for (int x = 0; x < qr.getSize(); ++x) {
         for (int y = 0; y < qr.getSize(); ++y) {
             if (qr.getModule(x, y)) {
-                QRect rect(x * scale, y * scale, scale, scale);
+                QRect rect(x * scale + offset, y * scale + offset, scale, scale);
                 painter.drawRect(rect);
             }
         }
@@ -87,6 +93,27 @@ void MainWindow::DeleteTimer(QTimer* timer)
 
 void MainWindow::on_danmuButton_clicked()
 {
+    m_networkinfo.blivechat_url = ui->bilivechatLine->toPlainText().trimmed();
+    file->networinfo->blivechat_url = m_networkinfo.blivechat_url;
+    file->DumpStream();
+
+    QEventLoop loop;
+    QNetworkAccessManager* net = new QNetworkAccessManager(this);
+    QNetworkRequest request;
+    request.setUrl(m_urls.GetRoomId + m_networkinfo.user_id);
+
+    QNetworkReply* reply = net->get(request);
+    connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+    loop.exec();
+
+    QByteArray r = reply->readAll();
+    reply->deleteLater();
+
+    QJsonObject data = RecordFile::LoadNotRecord(r);
+
+    QString room_id = data.toVariantMap()["data"].toMap()["room_id"].toString();
+
+    emit load_damu_webengine(QUrl(m_networkinfo.blivechat_url), m_networkinfo.cookies, room_id);
     danmu.show();
 }
 
@@ -121,9 +148,17 @@ void MainWindow::on_StartLiveButton_clicked()
 void MainWindow::on_testButton_clicked()
 {
 
-    QUrl url("https://passport.biligame.com/x/passport-login/web/crossDomain?DedeUserID=237314529&DedeUserID__ckMd5=c75501670423df2b&Expires=1737707392&SESSDATA=2557a163,1737707392,fbd26*71CjBBkbFMeQnVYMSSeJI7NKgij_mP09Z9B1nrqErODXZAX82qxOMAQ_eq9sVy0svU4pkSVlFjSTZscTdVSzZsYi00dFRHeEVtRUdhWWRBWlRTYzFxb0RCX05SVGxHcGNjRFhXeHFicjc2SldWbTlOM3RXR0FoeFRqRUdDaXdwNWcyTkVINTBWV2dBIIEC&bili_jct=e0f293cd8dec804383318009a90932a4&gourl=https%3A%2F%2Fwww.bilibili.com&first_domain=.bilibili.com");
-    QUrlQuery query(url);
-    qDebug() << query.queryItems();
+    file->LoadStream();
+    QList cookie = file->networinfo->cookies.toList();
+    QString s;
+    for (auto it = cookie.begin(); it != cookie.end(); ++it) {
+        if (it->second != "") {
+            s = it->first + "=" + it->second + ";";
+            qDebug() << s;
+        }
+    }
+
+    qDebug() << s;
 }
 
 void MainWindow::slots_login_request_finished(QNetworkReply* reply)
@@ -189,6 +224,16 @@ void MainWindow::slots_check_login_status()
                 return;
             }
             QByteArray data = reply->readAll();
+            // testtest
+            QList<QByteArray> headers = reply->rawHeaderList().toList();
+            qDebug() << "--------------------------------";
+            foreach (auto it, headers) {
+                if (it.toStdString() == "set-cookie") {
+                    qDebug() << reply->rawHeader(it).toStdString();
+                }
+            }
+            qDebug() << "--------------------------------";
+            // testtest
             this->ui->textBrowser->setText("检查登录状态");
             this->m_check_login_status(data);
         });
@@ -199,13 +244,9 @@ void MainWindow::slots_check_login_status()
 
 void MainWindow::slots_start_get_rtmp_code()
 {
-    file->LoadStream();
+
     m_networkinfo = *file->networinfo;
-    qDebug() << m_networkinfo.area;
-    qDebug() << m_networkinfo.cookies;
-    qDebug() << m_networkinfo.refresh_token;
-    qDebug() << m_networkinfo.url;
-    qDebug() << m_networkinfo.user_id;
+
     // 每次需要新获取的
     QEventLoop loop;
     QNetworkAccessManager* net = new QNetworkAccessManager(this);
@@ -263,10 +304,10 @@ void MainWindow::slots_start_get_rtmp_code()
         QJsonObject rtmpdata = RecordFile::LoadNotRecord(reply_rtmp->readAll());
         qDebug() << rtmpdata;
         QString rtmp_url = rtmpdata.toVariantMap()["data"].toMap()["rtmp"].toMap()["addr"].toString();
+
         QString rtmp_code = rtmpdata.toVariantMap()["data"].toMap()["rtmp"].toMap()["code"].toString();
-        this->ui->textBrowser->setText(rtmp_url + rtmp_code);
+        this->ui->textBrowser->setText(rtmp_url + "\n" + rtmp_code);
     });
-    // request.SetCookieHeader()
 }
 
 void MainWindow::on_StopLiveButton_clicked()
@@ -277,11 +318,11 @@ void MainWindow::on_StopLiveButton_clicked()
     QNetworkAccessManager* net = new QNetworkAccessManager(this);
     QNetworkRequest request;
     request.setUrl(m_urls.GetRoomId + m_networkinfo.user_id);
-    // qDebug() << m_urls.GetRoomId + m_networkinfo.user_id;
+
     QNetworkReply* reply = net->get(request);
     connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
     loop.exec();
-    // TODO: 异常处理，保存area
+    // TODO: 异常处理，保存area，保存room_id
     QByteArray r = reply->readAll();
     reply->deleteLater();
 
@@ -322,6 +363,9 @@ void MainWindow::on_StopLiveButton_clicked()
         text = text + "code: " + obj.toVariantMap()["code"].toString() + "\n";
         text = text + "change: " + obj.toVariantMap()["data"].toMap()["change"].toString() + "\n";
         text = text + "status: " + obj.toVariantMap()["data"].toMap()["status"].toString() + "\n";
+        if (obj.toVariantMap()["data"].toMap()["status"].toString() == "PREPARING") {
+            text = text + "已停播";
+        }
         this->ui->textBrowser->setText(text);
     });
 }
@@ -367,20 +411,23 @@ void MainWindow::m_check_login_status(QByteArray& data)
     }
     case UNSCANNED:
         qDebug() << "请扫码手机确认登录";
+        ui->textBrowser->setText("请扫码手机确认登录");
         break;
 
     case QREXPIRED:
         qDebug() << "二维码已失效 点击重新登录 timer delete ->" << m_timer_login_status;
-
+        ui->textBrowser->setText("二维码已失效 点击登录按钮重新登录");
         DeleteTimer(m_timer_login_status);
 
         break;
 
     case QRNOTCONFIRMED:
         qDebug() << "请尽快在手机确认登录";
+        ui->textBrowser->setText("请尽快在手机上确认登录");
         break;
     default:
         qDebug() << "emmm~ 接口改了？";
+        ui->textBrowser->setText("emmm...接口改了？");
         break;
     }
 }

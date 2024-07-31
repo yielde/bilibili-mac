@@ -4,9 +4,11 @@
 #include "publiclib.h"
 #include <QBrush>
 #include <QLabel>
+#include <QList>
 #include <QListWidget>
+#include <QUrl>
 #include <QWidget>
-
+#include <QtWebEngineWidgets>
 class Message;
 
 namespace Ui {
@@ -22,32 +24,22 @@ public:
 
 public:
     void msgShow();
+public slots:
+    void slots_load_webengine(QUrl url, QList<std::pair<QString, QString>>, QString room_id);
 protected slots:
-    void on_SendMsgButton_released();
+    void on_SendMsgButton_clicked();
+    void on_danmuRectBtn_clicked();
 
 private:
     Ui::DanmuWeight* ui;
-    Message* msgItem;
-    QVector<Message*> msgs;
+
+private:
+    qint16 m_width;
+    qint16 m_height;
+    QWebEngineView* webView;
+    QList<std::pair<QString, QString>> m_cookie;
+    URLS m_url;
+    QString m_room_id;
 };
 
-class Message {
-public:
-    Message(QString& msg)
-    {
-        mitem = new QListWidgetItem(msg);
-        QLinearGradient gradient(QPointF(0, 0), QPointF(0, 30));
-        gradient.setColorAt(0, QColor::fromRgb(255, 255, 224)); // 浅黄色
-        gradient.setColorAt(1, QColor::fromRgb(255, 165, 0)); // 黄色
-        QBrush gradientBrush(gradient);
-        mitem->setBackground(gradientBrush);
-    }
-    ~Message()
-    {
-        delete mitem;
-    }
-
-public:
-    QListWidgetItem* mitem;
-};
 #endif // DANMUWEIGHT_H
