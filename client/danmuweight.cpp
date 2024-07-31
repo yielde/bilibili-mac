@@ -74,15 +74,12 @@ void DanmuWeight::on_SendMsgButton_clicked()
     cookieJar.append(cookie.toUtf8());
     request.setRawHeader("Cookie", cookieJar);
 
-    // QHttpMultiPart* multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
-    // QHttpPart textPart;
-    // QDateTime now = QDateTime::currentDateTime();
-    // int timeT = now.toTimeSpec()
-    // qint64 timestampSecs = now.toSecsSinceEpoch();
     QString timestamp = QString::number(QDateTime::currentMSecsSinceEpoch() / 1000);
     QUrlQuery postData;
+    QString msg = ui->MsgEdit->text();
+    msg.replace("+", "%2B");
     postData.addQueryItem("bubble", "0");
-    postData.addQueryItem("msg", ui->MsgEdit->text());
+    postData.addQueryItem("msg", msg);
     postData.addQueryItem("color", "16777215");
     postData.addQueryItem("mode", "1");
     postData.addQueryItem("room_type", "0");
@@ -91,9 +88,8 @@ void DanmuWeight::on_SendMsgButton_clicked()
     postData.addQueryItem("rnd", timestamp);
     postData.addQueryItem("csrf", csrf);
     postData.addQueryItem("csrf_token", csrf);
-
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
-
+    qDebug() << postData.toString(QUrl::FullyEncoded).toUtf8() << "________________";
     QNetworkReply* reply = net->post(request, postData.toString(QUrl::FullyEncoded).toUtf8());
     // qDebug() << "---------------------------------";
     // qDebug() << csrf;
