@@ -6,45 +6,61 @@
 - [x] 扫码登录
 - [x] 选取直播区，开播获取推流码
 - [x] 关闭直播
-- [ ] 弹幕窗口
-  - [ ] 接收弹幕
-  - [ ] 发送弹幕
+- [x] 弹幕窗口
+  - [x] 接收弹幕
+  - [x] 发送弹幕
 
 
 
 # 使用
 
-1. 打开仓库里的client.dmg，或者用QT编译
+1. 打开编译好的client.dmg
+
+打包好的链接: https://pan.baidu.com/s/19edn8YxBGyWjV0JK3D2VBw?pwd=8qt6 提取码: 8qt6 
+
 
 右键client.app ->显示包内容->Contents->MacOS->双击运行client
 
-<img src="readmeimg/image-20240729124446202.png" alt="image-20240729124446202" style="zoom: 33%;" />
+<img src="readmeimg/image-20240731144131050.png" alt="image-20240731144131050" style="zoom:50%;" />
+
+
 
 2. 点击登录码，手机扫码
 
-<img src="readmeimg/image-20240729124657679.png" alt="image-20240729124657679" style="zoom:33%;" />
+<img src="readmeimg/image-20240731144349143.png" alt="image-20240731144349143" style="zoom: 25%;" />
 
 3. 点击开播（扫码后下次再使用cookie过期之前无序再登录，直接开播即可），选择开播区域
 
-<img src="readmeimg/image-20240729124753407.png" alt="image-20240729124753407" style="zoom:33%;" />
+<img src="readmeimg/image-20240731144526022.png" alt="image-20240731144526022" style="zoom:33%;" />
 
 获取到推流码
 
-![image-20240729135722872](readmeimg/image-20240729135722872.png)
+<img src="readmeimg/image-20240731144615740.png" alt="image-20240731144615740" style="zoom: 33%;" />
 
-填入OBS：第一行的问号去掉，第二行streamname前加问号
+
+
+填入OBS（OBS->设置->直播）
 
 OBS点击开始直播即可
 
-3. 点击关播
+3. 点击下播
 
-<img src="readmeimg/image-20240729125103929.png" alt="image-20240729125103929" style="zoom: 50%;" />
+<img src="readmeimg/image-20240731144935413.png" alt="image-20240731144935413" style="zoom:25%;" />
+
+4. 弹幕交流
+
+将blivechat生成的链接粘贴到这里，然后点击弹幕
+
+<img src="readmeimg/image-20240731144750015.png" alt="image-20240731144750015" style="zoom:33%;" />
+
+<img src="readmeimg/image-20240731144903288.png" alt="image-20240731144903288" style="zoom:25%;" />
 
 # 鸣谢
 
 特别感谢：
 
 1. 感谢 https://github.com/HellOwhatAs/bili_rtmp 提供的诸多思路与实现
+1. 感谢 https://github.com/xfgryujk/blivechat 不仅提供了弹幕获取，还开放免费的平台给大家用
 
 # 框架
 
