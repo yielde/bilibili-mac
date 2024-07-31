@@ -148,17 +148,7 @@ void MainWindow::on_StartLiveButton_clicked()
 void MainWindow::on_testButton_clicked()
 {
 
-    file->LoadStream();
-    QList cookie = file->networinfo->cookies.toList();
-    QString s;
-    for (auto it = cookie.begin(); it != cookie.end(); ++it) {
-        if (it->second != "") {
-            s = it->first + "=" + it->second + ";";
-            qDebug() << s;
-        }
-    }
-
-    qDebug() << s;
+    ui->textBrowser->setText("哔哩哔哩 (゜-゜)つロ 干杯~-bilibili");
 }
 
 void MainWindow::slots_login_request_finished(QNetworkReply* reply)

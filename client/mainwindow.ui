@@ -13,6 +13,16 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background: qlineargradient(
+        x1: 0, y1: 0, 
+        x2: 1, y2: 1,
+        stop: 0 rgb(160, 161, 161),
+        stop: 1 rgb(240, 242, 242)
+    );
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
@@ -30,6 +40,23 @@
           <width>100</width>
           <height>50</height>
          </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #1E90FF;  /* 道奇蓝 */
+    color: white;
+    border: none;
+    border-radius: 8px;  /* 这将创建椭圆形效果 */
+  
+}
+
+QPushButton:hover {
+    background-color: #4169E1;  /* 皇家蓝，鼠标悬停时稍微变暗 */
+}
+
+QPushButton:pressed {
+    background-color: #32CD32;  /* 酸橙绿，按下时变为绿色 */
+}</string>
         </property>
         <property name="text">
          <string>登录码</string>
@@ -50,6 +77,23 @@
           <height>50</height>
          </size>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #1E90FF;  /* 道奇蓝 */
+    color: white;
+    border: none;
+    border-radius: 8px;  /* 这将创建椭圆形效果 */
+  
+}
+
+QPushButton:hover {
+    background-color: #4169E1;  /* 皇家蓝，鼠标悬停时稍微变暗 */
+}
+
+QPushButton:pressed {
+    background-color: #32CD32;  /* 酸橙绿，按下时变为绿色 */
+}</string>
+        </property>
         <property name="text">
          <string>开播</string>
         </property>
@@ -69,6 +113,23 @@
           <height>50</height>
          </size>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #1E90FF;  /* 道奇蓝 */
+    color: white;
+    border: none;
+    border-radius: 8px;  /* 这将创建椭圆形效果 */
+  
+}
+
+QPushButton:hover {
+    background-color: #4169E1;  /* 皇家蓝，鼠标悬停时稍微变暗 */
+}
+
+QPushButton:pressed {
+    background-color: #32CD32;  /* 酸橙绿，按下时变为绿色 */
+}</string>
+        </property>
         <property name="text">
          <string>下播</string>
         </property>
@@ -87,6 +148,23 @@
           <width>100</width>
           <height>50</height>
          </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #1E90FF;  /* 道奇蓝 */
+    color: white;
+    border: none;
+    border-radius: 8px;  /* 这将创建椭圆形效果 */
+  
+}
+
+QPushButton:hover {
+    background-color: #4169E1;  /* 皇家蓝，鼠标悬停时稍微变暗 */
+}
+
+QPushButton:pressed {
+    background-color: #32CD32;  /* 酸橙绿，按下时变为绿色 */
+}</string>
         </property>
         <property name="text">
          <string>弹幕</string>
