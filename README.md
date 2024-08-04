@@ -14,9 +14,16 @@
 
 # 使用
 
+注：我没有开发者证书，打开dmg会显示文件无法运行或已损坏，请执行命令
+
+`sudo spctl --master-disable`，然后隐私与安全会显示**任何来源**，选择任何来源，就可以打开dmg啦~
+
+![image-20240804232146172](readmeimg/image-20240804232146172.png)
+
 1. 打开编译好的client.dmg
 
-打包好的链接: https://pan.baidu.com/s/19edn8YxBGyWjV0JK3D2VBw?pwd=8qt6 提取码: 8qt6 
+打包好的链接: https://pan.baidu.com/s/1oFjF_NC4be6wMFHbv-ip1A?pwd=7nz9 提取码: 7nz9 
+
 
 
 右键client.app ->显示包内容->Contents->MacOS->双击运行client
