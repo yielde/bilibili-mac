@@ -14,11 +14,19 @@
 
 # 使用
 
-注：我没有开发者证书，打开dmg会显示文件无法运行或已损坏，请执行命令
+**注：我没有开发者证书，打开dmg会显示文件无法运行或已损坏，请执行命令**
 
-`sudo spctl --master-disable`，然后隐私与安全会显示**任何来源**，选择任何来源，就可以打开dmg啦~
+`sudo spctl --master-disable`，然后隐私与安全会显示**任何来源**，选择任何来源，就可以打开client啦~，如果还不行接着看下面
 
 ![image-20240804232146172](readmeimg/image-20240804232146172.png)
+
+右键client.dmg，点击复制，然后双击client_副本.dmg，打开后看到client.app。
+
+终端输入 `xattr -cr `空格，然后将client.app拖入终端，终端如下：
+
+`xattr -cr /Volumes/\:Users\:tonghui\:workspace\:bilibili-mac\:client/client.app` ,后面再进去打开client就可以啦~
+
+![image-20240805201515968](readmeimg/image-20240805201515968.png)
 
 1. 打开编译好的client.dmg
 
