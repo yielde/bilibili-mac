@@ -18,8 +18,8 @@
 DanmuWeight::DanmuWeight(QWidget* parent)
     : QWidget(parent)
     , ui(new Ui::DanmuWeight)
-    , m_width(291)
-    , m_height(855)
+    , m_width(292)
+    , m_height(740)
 
 {
     ui->setupUi(this);

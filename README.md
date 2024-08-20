@@ -30,7 +30,13 @@
 
 1. 打开编译好的client.dmg
 
-打包好的链接: https://pan.baidu.com/s/1oFjF_NC4be6wMFHbv-ip1A?pwd=7nz9 提取码: 7nz9 
+打包的链接(macos): 
+
+https://pan.baidu.com/s/1oFjF_NC4be6wMFHbv-ip1A?pwd=7nz9 提取码: 7nz9 
+
+打包的链接(windows)，windows不存在mac的权限问题，直接使用:
+
+https://pan.baidu.com/s/1k1LQd8kzQ18Td2LUFTKNSQ?pwd=1crv 提取码: 1crv
 
 
 
@@ -69,6 +75,16 @@ OBS点击开始直播即可
 <img src="readmeimg/image-20240731144750015.png" alt="image-20240731144750015" style="zoom:33%;" />
 
 <img src="readmeimg/image-20240731144903288.png" alt="image-20240731144903288" style="zoom:25%;" />
+
+## 开箱即用
+
+打包的链接(macos): 
+
+https://pan.baidu.com/s/1oFjF_NC4be6wMFHbv-ip1A?pwd=7nz9 提取码: 7nz9 
+
+打包的链接(windows)，windows不存在mac的权限问题，直接使用:
+
+https://pan.baidu.com/s/1k1LQd8kzQ18Td2LUFTKNSQ?pwd=1crv 提取码: 1crv
 
 # 鸣谢
 
