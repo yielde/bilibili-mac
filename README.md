@@ -35,10 +35,7 @@
 https://pan.baidu.com/s/1oFjF_NC4be6wMFHbv-ip1A?pwd=7nz9 提取码: 7nz9 
 
 打包的链接(windows)，windows不存在mac的权限问题，直接使用:
-
-https://pan.baidu.com/s/1k1LQd8kzQ18Td2LUFTKNSQ?pwd=1crv 提取码: 1crv
-
-
+链接: https://pan.baidu.com/s/1LcJCdaWNHbNjz5SE-X23Kw?pwd=2xgq 提取码: 2xgq 
 
 右键client.app ->显示包内容->Contents->MacOS->双击运行client
 
