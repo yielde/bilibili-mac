@@ -32,7 +32,7 @@
 
 打包的链接(macos): 
 
-https://pan.baidu.com/s/1oFjF_NC4be6wMFHbv-ip1A?pwd=7nz9 提取码: 7nz9 
+https://pan.baidu.com/s/1iRfPR0o-YFdxzhfXMKkznA?pwd=62gv 提取码: 62gv 
 
 打包的链接(windows)，windows不存在mac的权限问题，直接使用:
 链接: https://pan.baidu.com/s/1LcJCdaWNHbNjz5SE-X23Kw?pwd=2xgq 提取码: 2xgq 
@@ -77,7 +77,11 @@ OBS点击开始直播即可
 
 打包的链接(macos): 
 
-https://pan.baidu.com/s/1oFjF_NC4be6wMFHbv-ip1A?pwd=7nz9 提取码: 7nz9 
+
+
+通过网盘分享的文件：bilibili-build-share-mac
+链接: https://pan.baidu.com/s/1iRfPR0o-YFdxzhfXMKkznA?pwd=62gv 提取码: 62gv 
+
 
 打包的链接(windows)，windows不存在mac的权限问题，直接使用:
 

@@ -5,6 +5,7 @@
 #include "mainwindow.h"
 #include "publiclib.h"
 #include "recordfile.h"
+#include <QCloseEvent>
 #include <QDateTime>
 #include <QList>
 #include <QMainWindow>
@@ -87,6 +88,9 @@ protected slots:
 signals:
     void area_form_show(QJsonObject obj);
     void load_damu_webengine(QUrl url, QList<std::pair<QString, QString>> cookie, QString room_id);
+
+protected:
+    void closeEvent(QCloseEvent* event);
 
 private:
     void m_check_login_status(QByteArray& data);

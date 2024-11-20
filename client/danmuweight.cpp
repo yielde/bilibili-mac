@@ -123,3 +123,9 @@ void DanmuWeight::on_danmuRectBtn_clicked()
 
     this->resize(m_width, m_height);
 }
+
+void DanmuWeight::closeEvent(QCloseEvent* event)
+{
+    qDebug() << "danmu weight quit";
+    event->accept();
+}

@@ -57,9 +57,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::GenQRcode(QString url)
 {
-
     std::vector<QrSegment> segs = QrSegment::makeSegments(url.toStdString().c_str());
-    const QrCode qr = QrCode::encodeSegments(segs, QrCode::Ecc::MEDIUM, 7, 7);
+    const QrCode qr = QrCode::encodeSegments(segs, QrCode::Ecc::HIGH, 1, 30, 2, false);
 
     int width = ui->QRCode->width();
     int height = ui->QRCode->height();
@@ -149,6 +148,12 @@ void MainWindow::on_testButton_clicked()
 {
 
     ui->textBrowser->setText("哔哩哔哩 (゜-゜)つロ 干杯~-bilibili");
+}
+
+void MainWindow::closeEvent(QCloseEvent* event)
+{
+    danmu.close();
+    event->accept();
 }
 
 void MainWindow::slots_login_request_finished(QNetworkReply* reply)
@@ -292,11 +297,14 @@ void MainWindow::slots_start_get_rtmp_code()
         }
 
         QJsonObject rtmpdata = RecordFile::LoadNotRecord(reply_rtmp->readAll());
-        qDebug() << rtmpdata;
-        QString rtmp_url = rtmpdata.toVariantMap()["data"].toMap()["rtmp"].toMap()["addr"].toString();
 
-        QString rtmp_code = rtmpdata.toVariantMap()["data"].toMap()["rtmp"].toMap()["code"].toString();
-        this->ui->textBrowser->setText(rtmp_url + "\n" + rtmp_code);
+        if (rtmpdata.toVariantMap()["code"].toInt() == -101) {
+            this->ui->textBrowser->setText(rtmpdata.toVariantMap()["code"].toString() + ": " + rtmpdata.toVariantMap()["message"].toString());
+        } else {
+            QString rtmp_url = rtmpdata.toVariantMap()["data"].toMap()["rtmp"].toMap()["addr"].toString();
+            QString rtmp_code = rtmpdata.toVariantMap()["data"].toMap()["rtmp"].toMap()["code"].toString();
+            this->ui->textBrowser->setText(rtmp_url + "\n" + rtmp_code);
+        }
     });
 }
 

@@ -3,6 +3,7 @@
 
 #include "publiclib.h"
 #include <QBrush>
+#include <QCloseEvent>
 #include <QLabel>
 #include <QList>
 #include <QListWidget>
@@ -29,6 +30,9 @@ public slots:
 protected slots:
     void on_SendMsgButton_clicked();
     void on_danmuRectBtn_clicked();
+
+protected:
+    void closeEvent(QCloseEvent* event);
 
 private:
     Ui::DanmuWeight* ui;
