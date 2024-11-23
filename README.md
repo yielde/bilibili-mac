@@ -35,7 +35,8 @@
 https://pan.baidu.com/s/1iRfPR0o-YFdxzhfXMKkznA?pwd=62gv 提取码: 62gv 
 
 打包的链接(windows)，windows不存在mac的权限问题，直接使用:
-链接: https://pan.baidu.com/s/1LcJCdaWNHbNjz5SE-X23Kw?pwd=2xgq 提取码: 2xgq 
+通过百度网盘分享的文件：bilibili-build-share-win11.zip
+链接：https://pan.baidu.com/s/1BSrHZDrgK4_DbnTGbdrEpQ?pwd=48ou 提取码：48ou 
 
 右键client.app ->显示包内容->Contents->MacOS->双击运行client
 
@@ -85,7 +86,8 @@ OBS点击开始直播即可
 
 打包的链接(windows)，windows不存在mac的权限问题，直接使用:
 
-https://pan.baidu.com/s/1k1LQd8kzQ18Td2LUFTKNSQ?pwd=1crv 提取码: 1crv
+通过百度网盘分享的文件：bilibili-build-share-win11.zip
+链接：https://pan.baidu.com/s/1BSrHZDrgK4_DbnTGbdrEpQ?pwd=48ou 提取码：48ou 
 
 # 鸣谢
 

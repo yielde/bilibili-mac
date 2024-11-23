@@ -63,6 +63,7 @@ void MainWindow::GenQRcode(QString url)
     int width = ui->QRCode->width();
     int height = ui->QRCode->height();
     QPixmap pixmap(width, height);
+    pixmap.fill(Qt::white); // 修复 windows 二维码黑色
     QPainter painter(&pixmap);
     painter.setBrush(Qt::black);
     int scale = width / qr.getSize();
