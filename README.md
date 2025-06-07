@@ -1,3 +1,7 @@
+# 最新说明
+阿B web直播功能已下线，本软件无法再正常使用。
+
+=====================================================================================================
 # bilibili-mac
 
 一款基于C++ QT的跨平台软件（UI毛坯风格），PS：主要是mac没找到类似win直播姬的客户端（windows直接用官方的直播姬就好啦）
@@ -77,17 +81,7 @@ OBS点击开始直播即可
 ## 开箱即用
 
 打包的链接(macos): 
-
-
-
-通过网盘分享的文件：bilibili-build-share-mac
-链接: https://pan.baidu.com/s/1iRfPR0o-YFdxzhfXMKkznA?pwd=62gv 提取码: 62gv 
-
-
-打包的链接(windows)，windows不存在mac的权限问题，直接使用:
-
-通过百度网盘分享的文件：bilibili-build-share-win11.zip
-链接：https://pan.baidu.com/s/1BSrHZDrgK4_DbnTGbdrEpQ?pwd=48ou 提取码：48ou 
+已关闭
 
 # 鸣谢
 
